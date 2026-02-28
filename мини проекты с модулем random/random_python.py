@@ -20,7 +20,7 @@ while True:
         user_game = input("Введите ответ (да/нет): ").lower()
 
         if user_game == "выход" or user_game == "выйти":
-            print("Выход из игры прошел успешно")
+            print("Выход из игры прошел успешно!")
             break
 
         else:
