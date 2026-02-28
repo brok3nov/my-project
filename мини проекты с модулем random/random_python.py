@@ -5,7 +5,7 @@ import random
 
 enemies = ["Орк", "Дракон", "Слайм"]
 heros_path_chest = ["Меч", "Артефакт", "Броня"]
-chect = ["100 серебрянных монет", "200 серебрянных монет", "300 серебрянных монет"]
+chest = ["100 серебрянных монет", "200 серебрянных монет", "300 серебрянных монет"]
 
 while True:
 
@@ -19,12 +19,18 @@ while True:
         print("Привет дружище, хочешь поиграть в игру ? Чтобы выйти напишите \"Выход\"")
         user_game = input("Введите ответ (да/нет): ").lower()
 
-        if user_game in ["не хочу", "нет", "неа"]:
-            print("Понял тебя! сыграем в другой раз")
+        if user_game == "выход" or user_game == "выйти":
+            print("Выход из игры прошел успешно")
             break
 
-        elif user_game in ["хочу", "да", "давай", "конечно"]:
-            print("---ИГРА ГЕРОЙ РАНДОМНЫХ ЧИСЕЛ---")
+        else:
+
+            if user_game in ["не хочу", "нет", "неа"]:
+                print("Понял тебя! сыграем в другой раз")
+                break
+
+            elif user_game in ["хочу", "да", "давай", "конечно"]:
+                print("---ИГРА ГЕРОЙ РАНДОМНЫХ ЧИСЕЛ---")
 
             nick = input("Введите свой ник: ")
 
@@ -39,7 +45,7 @@ while True:
                 user_chect = input("Открой сундук с призом (открыть): ").lower()
                 
                 if user_chect == "открыть":
-                    print(f"Тебе выпало - {random.choice(chect)} !")
+                    print(f"Тебе выпало - {random.choice(chest)} !")
                     print("До следующей игры, пока !")
                     break
 
@@ -60,12 +66,14 @@ while True:
 
                     if attack in ["ударить", "атаковать", "удар", "атака"]:
 
+                        rewards = random.sample(heros_path_chest, 2)
+
                         if critical_hit == 95 or critical_hit == 100:
                             user_damage = user_damage * 2
                             print(f"Молодец, ты нанес крит. удар {user_enemies}, твой урон - {user_damage}")
 
                             print(f"{user_enemies} повержен, тебя ждет твоя награда!")
-                            print(f"В качестве награды за настоящий путь героя тебе выпало - {random.sample(heros_path_chest, 2)}")
+                            print(f"В качестве награды за настоящий путь героя тебе выпало - {', '.join(rewards)}")
 
                             gold = 100 * user_luck
                             print(f"Бонусом получаешь - {round(gold)} золотых!")
@@ -77,7 +85,7 @@ while True:
                             print(f"Молодец, ты нанес удар {user_enemies}, твой урон - {user_damage}")
 
                             print(f"{user_enemies} повержен, тебя ждет твоя награда!")
-                            print(f"В качестве награды за настоящий путь героя тебе выпало - {random.sample(heros_path_chest, 2)}")
+                            print(f"В качестве награды за настоящий путь героя тебе выпало - {', '.join(rewards)}")
 
                             gold = 100 * user_luck
                             print(f"Бонусом получаешь - {round(gold)} золотых!")
