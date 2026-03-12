@@ -3,6 +3,7 @@
 import random
 import time
 one_time = time.time()
+hour, two_min, sek = 0
 
 blows = ["вертушка", "апперкот", "джеб", "хук"]
 attempt = 3
